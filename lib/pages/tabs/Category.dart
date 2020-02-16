@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jdshop/widget/SrarchAppBar.dart';
 import '../../services/ScreenAdapter.dart';
+import '../../widget/SrarchAppBar.dart';
 import 'package:dio/dio.dart';
 import '../../Config/Config.dart';
 import '../../Models/CateModel.dart';
@@ -146,11 +148,14 @@ class _CategoryPageState extends State<CategoryPage> with AutomaticKeepAliveClie
     var rightItemWidth = (screenWidth - leftWidth - 20 - 20) / 3;
     var rightItemHeight = rightItemWidth + ScreenAdapter.height(25);
 
-    return Row(
+    return Scaffold(
+      appBar: SearchAppBar.appBar(context),
+      body: Row(
       children: <Widget>[
         _leftCateWidget(leftWidth),
         _rightCateWidget(rightItemWidth, rightItemHeight)
       ],
+    ),
     );
   }
 }
