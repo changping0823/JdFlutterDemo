@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jdshop/services/ScreenAdapter.dart';
-import 'package:flutter_jdshop/widget/SrarchAppBar.dart';
+import '../../services/ScreenAdapter.dart';
 import '../../widget/SrarchAppBar.dart';
 import 'Home.dart';
 import 'Category.dart';
@@ -48,7 +47,7 @@ class _TabsState extends State<Tabs> {
 
 
     return Scaffold(
-      appBar: _showAppBar(context, this._currentIndex),
+      // appBar: _showAppBar(context, this._currentIndex),
       body: PageView(
         controller: this._pageController,
         children: this._pageList,
