@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jdshop/services/ScreenAdapter.dart';
+import '../services/ScreenAdapter.dart';
 
 class SearchAppBar {
+  SearchAppBar(BuildContext context);
+
   static appBar(context) {
     return AppBar(
       leading: IconButton(
