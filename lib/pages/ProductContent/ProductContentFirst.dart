@@ -124,14 +124,7 @@ class _ProductContentFirstState extends State<ProductContentFirst> {
                                         label: Text("白色"),
                                         padding: EdgeInsets.all(10),
                                       ),
-                                    ),
-                                    Container(
-                                      margin: EdgeInsets.all(10),
-                                      child: Chip(
-                                        label: Text("白色"),
-                                        padding: EdgeInsets.all(10),
-                                      ),
-                                    ),
+                                    )
                                   ],
                                 ),
                               )
