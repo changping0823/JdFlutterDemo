@@ -198,9 +198,8 @@ class _HomePageState extends State<HomePage>
                 ),
               ),
               onTap: () {
-                Navigator.pushNamed(context, '/productContent',arguments: {
-                  'id':value.sId
-                });
+                Navigator.pushNamed(context, '/productContent',
+                    arguments: {'id': value.sId});
               },
             );
           }).toList()),
@@ -210,16 +209,19 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     ScreenAdapter.init(context);
-    return ListView(children: <Widget>[
-      _swiperWidget(),
-      SizedBox(height: ScreenAdapter.width(10)),
-      _titleWidget('猜你喜欢'),
-      SizedBox(height: ScreenAdapter.width(10)),
-      _hotProductListWidget(),
-      SizedBox(height: ScreenAdapter.width(10)),
-      _titleWidget('热门推荐'),
-      SizedBox(height: ScreenAdapter.width(10)),
-      _recProductListWidget(),
-    ]);
+    return Scaffold(
+      appBar: AppBar(title: Text('首页')),
+      body: ListView(children: <Widget>[
+        _swiperWidget(),
+        SizedBox(height: ScreenAdapter.width(10)),
+        _titleWidget('猜你喜欢'),
+        SizedBox(height: ScreenAdapter.width(10)),
+        _hotProductListWidget(),
+        SizedBox(height: ScreenAdapter.width(10)),
+        _titleWidget('热门推荐'),
+        SizedBox(height: ScreenAdapter.width(10)),
+        _recProductListWidget(),
+      ]),
+    );
   }
 }
