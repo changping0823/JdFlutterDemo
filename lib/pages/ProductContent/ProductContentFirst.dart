@@ -12,108 +12,176 @@ class ProductContentFirst extends StatefulWidget {
   _ProductContentFirstState createState() => _ProductContentFirstState();
 }
 
-class _ProductContentFirstState extends State<ProductContentFirst> {
+class _ProductContentFirstState extends State<ProductContentFirst>
+    with AutomaticKeepAliveClientMixin {
   List<Attr> _attr = [];
+  String _selectedAttr;
+
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
     super.initState();
     this._attr = widget._productContent.attr;
-    print(this._attr);
+    _initAttr();
+  }
+
+  _initAttr() {
+    var attr = this._attr;
+    for (Attr item in attr) {
+      for (var i = 0; i < item.list.length; i++) {
+        var v = item.list[i];
+        item.attrList.add({'title': v, 'checked': i == 0});
+      }
+    }
+
+     _getSelectedAttrValue();
+
+  }
+
+   _changeAttr(cate, title,setBottomState) {
+    List<Attr> attr = this._attr;
+    for (Attr item in attr) {
+      if (item.cate == cate) {
+        for (var a in item.attrList) {
+          a['checked'] = a['title'] == title;
+        }
+      }
+    }
+    setBottomState(() {
+      this._attr = attr;
+    });
+
+    _getSelectedAttrValue();
+  }
+  
+  _getSelectedAttrValue(){
+    var attr = this._attr;
+    List tempArr = [];
+    for (var item in attr) {
+      for (var a in item.attrList) {
+        if(a['checked'] == true){
+          tempArr.add(a['title']);
+        }
+      }
+    }
+    // print(tempArr);
+    setState(() {
+      this._selectedAttr = tempArr.join(',');
+    });
   }
 
   _attrBottomSheet() {
     showModalBottomSheet(
         context: context,
         builder: (contex) {
-          return GestureDetector(
-            //解决showModalBottomSheet点击消失的问题
-            onTap: () {
-              return false;
-            },
-            child: Stack(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(ScreenAdapter.width(20)),
-                  child: ListView(
-                    children: <Widget>[
-                      Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: this._attr.map((value) {
-                            return Wrap(
-                              children: <Widget>[
-                                Container(
-                                  width: ScreenAdapter.width(100),
-                                  child: Padding(
-                                    padding: EdgeInsets.only(
-                                        top: ScreenAdapter.height(22)),
-                                    child: Text("${value.cate}: ",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold)),
-                                  ),
-                                ),
-                                Container(
-                                  width: ScreenAdapter.width(610),
-                                  child: Wrap(
-                                    children: value.list.map((item){
-                                      return Container(
-                                        margin: EdgeInsets.all(10),
-                                        child: Chip(
-                                          label: Text("$item"),
-                                          padding: EdgeInsets.all(10),
-                                        ),
-                                      );
-                                    }).toList(),
-                                  ),
-                                )
-                              ],
-                            );
-                          }).toList())
-                    ],
-                  ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  width: ScreenAdapter.width(750),
-                  height: ScreenAdapter.height(76),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          child: JdButton(
-                            color: Color.fromRGBO(253, 1, 0, 0.9),
-                            text: "加入购物车",
-                            action: () {
-                              print('加入购物车');
-                            },
-                          ),
-                        ),
+          return StatefulBuilder(
+            builder: (BuildContext context, setBottomState) {
+              return GestureDetector(
+                //解决showModalBottomSheet点击消失的问题
+                onTap: () {
+                  return false;
+                },
+                child: Stack(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(ScreenAdapter.width(20)),
+                      child: ListView(
+                        children: <Widget>[
+                          Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: this._attr.map((value) {
+                                return Wrap(
+                                  children: <Widget>[
+                                    Container(
+                                      width: ScreenAdapter.width(100),
+                                      child: Padding(
+                                        padding: EdgeInsets.only(
+                                            top: ScreenAdapter.height(22)),
+                                        child: Text("${value.cate}: ",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold)),
+                                      ),
+                                    ),
+                                    _attrWidget(value,setBottomState)
+                                  ],
+                                );
+                              }).toList())
+                        ],
                       ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                            margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                            child: JdButton(
-                              color: Color.fromRGBO(255, 165, 0, 0.9),
-                              text: "立即购买",
-                              action: () {
-                                print('立即购买');
-                              },
-                            )),
-                      )
-                    ],
-                  ),
-                )
-              ],
-            ),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      width: ScreenAdapter.width(750),
+                      height: ScreenAdapter.height(100),
+                      child: Row(
+                        
+                        children: <Widget>[
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                              margin: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                              child: JdButton(
+                                color: Color.fromRGBO(253, 1, 0, 0.9),
+                                text: "加入购物车",
+                                action: () {
+                                  print('加入购物车');
+                                },
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            flex: 1,
+                            child: Container(
+                                margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                child: JdButton(
+                                  color: Color.fromRGBO(255, 165, 0, 0.9),
+                                  text: "立即购买",
+                                  action: () {
+                                    print('立即购买');
+                                  },
+                                )),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              );
+            },
           );
         });
   }
 
+  _attrWidget(Attr value,setBottomState) {
+    return Container(
+      width: ScreenAdapter.width(610),
+      child: Wrap(
+        children: value.attrList.map((item) {
+          return InkWell(
+            onTap: () {
+              _changeAttr(value.cate, item['title'],setBottomState);
+            },
+            child: Container(
+              margin: EdgeInsets.all(10),
+              child: Chip(
+                label: Text("${item['title']}",style: TextStyle(color: Colors.white)),
+                padding: EdgeInsets.all(10),
+                backgroundColor: item['checked'] ? Colors.red : Colors.black26,
+              ),
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+ 
+
   @override
   Widget build(BuildContext context) {
+
+    ScreenAdapter.init(context);
     String pic = Config.domain + widget._productContent.pic;
     pic = pic.replaceAll('\\', '/');
     return Container(
@@ -172,7 +240,7 @@ class _ProductContentFirstState extends State<ProductContentFirst> {
             ),
           ),
           //筛选
-          Container(
+          this._attr.length > 0?Container(
             margin: EdgeInsets.only(top: 10),
             height: ScreenAdapter.height(80),
             child: InkWell(
@@ -182,11 +250,11 @@ class _ProductContentFirstState extends State<ProductContentFirst> {
               child: Row(
                 children: <Widget>[
                   Text("已选: ", style: TextStyle(fontWeight: FontWeight.bold)),
-                  Text("115，黑色，XL，1件")
+                  Text("${this._selectedAttr}")
                 ],
               ),
             ),
-          ),
+          ):Text(''),
           Divider(),
           Container(
             height: ScreenAdapter.height(80),
