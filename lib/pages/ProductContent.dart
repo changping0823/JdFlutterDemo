@@ -1,8 +1,13 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter_jdshop/widget/JdButton.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter_jdshop/widget/LoadingWidget.dart';
+import 'package:provider/provider.dart';
+import '../Provider/CartCounter.dart';
 import '../services/ScreenAdapter.dart';
+import '../services/CartService.dart';
+import '../widget/JdButton.dart';
+import '../widget/LoadingWidget.dart';
+import '../services/EventBus.dart';
 import '../Config/Config.dart';
 import '../Models/ProductContentModel.dart';
 
@@ -27,7 +32,8 @@ PopupMenuItem _popupMenuItem(icon, title) {
 
 class _ProductContentPageState extends State<ProductContentPage> {
   ProductContentItem _productContent;
-
+  CartCounter _cartCounter;
+  
   @override
   void initState() {
     super.initState();
@@ -47,6 +53,8 @@ class _ProductContentPageState extends State<ProductContentPage> {
   @override
   Widget build(BuildContext context) {
     ScreenAdapter.init(context);
+    this._cartCounter = Provider.of<CartCounter>(context);
+    
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -119,16 +127,23 @@ class _ProductContentPageState extends State<ProductContentPage> {
                     ),
                     Expanded(
                       flex: 1,
-                      child:JdButton(color: Colors.red,text: '加入购物车',action: (){
-                        print('加入购物车');
-
+                      child:JdButton(color: Colors.red,text: '加入购物车',action: ()async{
+                        if(this._productContent.attr.length > 0){
+                          eventBus.fire(new ProductContentEvent('加入购物车'));
+                        }else{
+                         await CartService.addProduct(this._productContent);
+                          this._cartCounter.updateCartList();
+                        }
                       })
                     ),
                     Expanded(
                       flex: 1,
                       child:JdButton(color: Color.fromRGBO(255, 165, 0, 0.9),text: '立即购买',action: (){
-                        print('立即购买');
-
+                        if(this._productContent.attr.length > 0){
+                          eventBus.fire(new ProductContentEvent('加入购物车'));
+                        }else{
+                          print('立即购买');
+                        }
                       })
                     )
                   ],
