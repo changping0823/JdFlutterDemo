@@ -21,9 +21,6 @@ class _ProductContentSecondState extends State<ProductContentSecond>
   void initState() {
     super.initState();
     this._sId = widget._productContent.sId;
-
-    // print(this._sId);
-    // print('http://jd.itying.com/pcontent?id=${this._sId}');
   }
 
   @override
