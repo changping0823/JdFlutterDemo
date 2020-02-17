@@ -3,13 +3,23 @@ import '../../services/ScreenAdapter.dart';
 import 'CartNum.dart';
 
 class CartItem extends StatefulWidget {
-  CartItem({Key key}) : super(key: key);
+  final Map _itmeData;
+  CartItem(this._itmeData,{Key key}) : super(key: key);
 
   @override
   _CartItemState createState() => _CartItemState();
 }
 
 class _CartItemState extends State<CartItem> {
+
+  Map _itmeData;
+
+  @override
+  void initState() { 
+    super.initState();
+    this._itmeData = widget._itmeData;
+  }
+
   @override
   Widget build(BuildContext context) {
     ScreenAdapter.init(context);
@@ -30,9 +40,7 @@ class _CartItemState extends State<CartItem> {
           ),
           Container(
             height: ScreenAdapter.height(120),
-            child: Image.network(
-                'http://www.itying.com/images/flutter/list2.jpg',
-                fit: BoxFit.cover),
+            child: Image.network('${this._itmeData['pic']}',fit: BoxFit.cover),
           ),
           Expanded(
               flex: 1,
@@ -40,16 +48,18 @@ class _CartItemState extends State<CartItem> {
                 padding: EdgeInsets.all(10),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('在设置按钮弹出的菜单中,选择【Settings】选项,此处是整个vscode的设置入口',maxLines: 2),
+                    Text('${this._itmeData['title']}',maxLines: 2),
+                    Text('${this._itmeData['selectedAttr']}',maxLines: 2),
                     Stack(
                       children: <Widget>[
                         Align(
-                          child: Text('￥23',style: TextStyle(color: Colors.red)),
+                          child: Text('￥${this._itmeData['price']}',style: TextStyle(color: Colors.red)),
                           alignment: Alignment.centerLeft,
                         ),
                         Align(
-                          child: CartNum(),
+                          child: CartNum(this._itmeData),
                           alignment: Alignment.centerRight,
                         ),
                       ],
