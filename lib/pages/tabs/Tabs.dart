@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../services/ScreenAdapter.dart';
-import '../../widget/SrarchAppBar.dart';
 import 'Home.dart';
 import 'Category.dart';
 import 'Cart.dart';
@@ -33,19 +32,6 @@ class _TabsState extends State<Tabs> {
   @override
   Widget build(BuildContext context) {
     ScreenAdapter.init(context);
-
-    _showAppBar(context,currentIndex){
-      if(currentIndex == 0 || currentIndex == 1){
-        return SearchAppBar.appBar(context);
-      }else if(currentIndex == 2){
-        return AppBar(title: Text("购物车"));
-      }else if(currentIndex == 3){
-        return AppBar(title: Text("用户中心"));
-      }
-      return AppBar(title: Text(""));
-    }
-
-
     return Scaffold(
       // appBar: _showAppBar(context, this._currentIndex),
       body: PageView(
