@@ -3,12 +3,14 @@ import 'package:flutter/material.dart';
 class JdButton extends StatelessWidget {
   final Color color;
   final String text;
+  final double height;
   final GestureTapCallback action;
-  JdButton({Key key,this.color=Colors.black,this.text='按钮',this.action}) : super(key: key);
+  JdButton({Key key,this.color=Colors.black,this.text='按钮',this.action,this.height=80}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: this.height,
       child: InkWell(
         onTap: this.action,
         child: Container(
