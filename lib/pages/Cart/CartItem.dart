@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../Provider/CartCounter.dart';
 import '../../services/ScreenAdapter.dart';
 import 'CartNum.dart';
 
@@ -13,16 +15,12 @@ class CartItem extends StatefulWidget {
 class _CartItemState extends State<CartItem> {
 
   Map _itmeData;
-
-  @override
-  void initState() { 
-    super.initState();
-    this._itmeData = widget._itmeData;
-  }
-
+  CartCounter _cartCounter;
   @override
   Widget build(BuildContext context) {
     ScreenAdapter.init(context);
+    this._cartCounter = Provider.of<CartCounter>(context);
+    this._itmeData = widget._itmeData;
 
     return Container(
       height: ScreenAdapter.height(160),
@@ -33,8 +31,11 @@ class _CartItemState extends State<CartItem> {
           Container(
             width: ScreenAdapter.width(80),
             child: Checkbox(
-              value: true,
-              onChanged: (check) {},
+              value: this._itmeData['checked'],
+              onChanged: (check) {
+                this._itmeData['checked'] = !this._itmeData['checked'];
+                this._cartCounter.productChecked();
+              },
               activeColor: Colors.pink,
             ),
           ),

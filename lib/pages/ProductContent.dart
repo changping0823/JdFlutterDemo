@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 import '../Provider/CartCounter.dart';
 import '../services/ScreenAdapter.dart';
@@ -114,7 +115,11 @@ class _ProductContentPageState extends State<ProductContentPage> {
                 ),
                 child: Row(
                   children: <Widget>[
-                    Container(
+                    InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(context, '/cart');
+                      },
+                      child: Container(
                       margin: EdgeInsets.only(top:5),
                       width: 100,
                       height: ScreenAdapter.height(100),
@@ -125,6 +130,7 @@ class _ProductContentPageState extends State<ProductContentPage> {
                         ],
                       ),
                     ),
+                    ),
                     Expanded(
                       flex: 1,
                       child:JdButton(color: Colors.red,text: '加入购物车',action: ()async{
@@ -132,7 +138,8 @@ class _ProductContentPageState extends State<ProductContentPage> {
                           eventBus.fire(new ProductContentEvent('加入购物车'));
                         }else{
                          await CartService.addProduct(this._productContent);
-                          this._cartCounter.updateCartList();
+                          this._cartCounter.updateProductList();
+                          Fluttertoast.showToast(msg: "加入购物车成功",toastLength: Toast.LENGTH_SHORT,gravity: ToastGravity.CENTER,);
                         }
                       })
                     ),

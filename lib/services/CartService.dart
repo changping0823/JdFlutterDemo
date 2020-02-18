@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import '../Config/Config.dart';
 import 'Storage.dart';
 
@@ -38,11 +39,15 @@ class CartService {
 
   static formatProduct(item) {
     String pic = item.pic;
-    pic = Config.domain + pic.replaceAll('\\', '/'); 
+    pic = Config.domain + pic.replaceAll('\\', '/');
     final Map data = new Map<String, dynamic>();
     data['_id'] = item.sId;
     data['title'] = item.title;
-    data['price'] = item.price;
+    if (item.price is int || item.price is double || item.price is num) {
+      data['price'] = item.price;
+    } else {
+      data['price'] = double.parse(item.price);
+    }
     data['selectedAttr'] = item.selectedAttr;
     data['count'] = item.count;
     data['pic'] = pic;

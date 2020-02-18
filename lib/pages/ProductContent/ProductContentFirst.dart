@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../../Provider/CartCounter.dart';
 import '../../services/CartService.dart';
 import '../../Config/Config.dart';
@@ -32,8 +33,9 @@ class _ProductContentFirstState extends State<ProductContentFirst>
     super.initState();
     this._productContent = widget._productContent;
     this._attr = this._productContent.attr;
+    print('xxxxxxxxxx-------');
     _initAttr();
-    
+
     /// 监听广播
     this.actionEventBus = eventBus.on<ProductContentEvent>().listen((event) {
       this._attrBottomSheet();
@@ -51,6 +53,7 @@ class _ProductContentFirstState extends State<ProductContentFirst>
   _initAttr() {
     var attr = this._attr;
     for (Attr item in attr) {
+      item.attrList.clear();
       for (var i = 0; i < item.list.length; i++) {
         var v = item.list[i];
         item.attrList.add({'title': v, 'checked': i == 0});
@@ -155,15 +158,16 @@ class _ProductContentFirstState extends State<ProductContentFirst>
                               child: JdButton(
                                 color: Color.fromRGBO(253, 1, 0, 0.9),
                                 text: "加入购物车",
-                                action: () async{
-                                  print('22222加入购物车');
+                                action: () async {
+                                  await CartService.addProduct(
+                                      this._productContent);
 
-                                  await CartService.addProduct(this._productContent);
                                   /// 关闭筛选弹出框
                                   Navigator.pop(context);
-                                  ///调用provider更新数据
-                                  this._cartCounter.updateCartList();
 
+                                  ///调用provider更新数据
+                                  this._cartCounter.updateProductList();
+                                  Fluttertoast.showToast(msg: "加入购物车成功",toastLength: Toast.LENGTH_SHORT,gravity: ToastGravity.CENTER,);
                                 },
                               ),
                             ),
@@ -217,7 +221,6 @@ class _ProductContentFirstState extends State<ProductContentFirst>
 
   @override
   Widget build(BuildContext context) {
-
     this._cartCounter = Provider.of<CartCounter>(context);
 
     ScreenAdapter.init(context);
