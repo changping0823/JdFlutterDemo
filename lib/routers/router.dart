@@ -16,8 +16,8 @@ final routers = {
   '/cart': (context) => CartPage(),
   '/login': (context) => LoginPage(),
   '/registerFirst': (context) => RegisterFirstPage(),
-  '/registerSecond': (context) => RegisterSecondPage(),
-  '/registerThird': (context) => RegisterThirdPage(),
+  '/registerSecond': (context,{arguments}) => RegisterSecondPage(arguments:arguments),
+  '/registerThird': (context,{arguments}) => RegisterThirdPage(arguments:arguments),
   '/productList': (context,{arguments}) => ProductListPage(arguments:arguments),
   '/productContent': (context,{arguments}) => ProductContentPage(arguments:arguments)
 

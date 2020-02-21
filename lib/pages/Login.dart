@@ -1,7 +1,14 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_jdshop/widget/JdButton.dart';
+import '../services/EventBus.dart';
+import '../Config/Config.dart';
+import '../widget/JdButton.dart';
 import '../services/ScreenAdapter.dart';
 import '../widget/JdTextField.dart';
+import '../services/Storage.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key}) : super(key: key);
@@ -11,6 +18,39 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String username = '';
+  String password = '';
+
+  _doLigin() async{
+    RegExp regexp = new RegExp(r'^1\d{10}$');
+    if (!regexp.hasMatch(this.username)) {
+      Fluttertoast.showToast(msg: "手机号不正确",toastLength: Toast.LENGTH_SHORT,gravity: ToastGravity.CENTER);
+      return;
+    }
+    if (this.password.length <6 ) {
+      Fluttertoast.showToast(msg: "密码不能小于6位",toastLength: Toast.LENGTH_SHORT,gravity: ToastGravity.CENTER);
+      return;
+    }
+
+     var api = '${Config.domain}api/doLogin';
+      var response = await Dio().post(api,data:{'username':this.username,'password':this.password});
+      if(response.data['success']){
+        Storage.setString('userInfo', json.encode(response.data['userinfo']));
+
+        Navigator.pop(context);
+      }else{
+        Fluttertoast.showToast(msg: "${response.data['message']}",toastLength: Toast.LENGTH_SHORT,gravity: ToastGravity.CENTER);
+      }
+
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    eventBus.fire(new UserEvent('登陆成功'));
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
             JdTextField(
               placeholder: '请输入用户名',
               onChanged: (value) {
-                print(value);
+                this.username = value;
               },
             ),
             SizedBox(height: ScreenAdapter.height(20)),
@@ -50,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
               placeholder: '请输入密码',
               secureTextEntry: true,
               onChanged: (value) {
-                print(value);
+                this.password = value;
               },
             ),
 
@@ -87,9 +127,7 @@ class _LoginPageState extends State<LoginPage> {
               text: '登录',
               height: ScreenAdapter.height(110),
               color: Colors.red,
-              action: (){
-
-              },
+              action: _doLigin,
             )
           ],
         ),

@@ -6,6 +6,12 @@ class ProductContentEvent{
   String text;
   ProductContentEvent(String text){
     this.text = text;
+  }
+}
 
+class UserEvent{
+  String text;
+  UserEvent(String text){
+    this.text = text;
   }
 }
