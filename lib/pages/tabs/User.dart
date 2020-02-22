@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_aes_ecb_pkcs5/flutter_aes_ecb_pkcs5.dart';
 import 'package:flutter_jdshop/widget/JdButton.dart';
 import '../../services/EventBus.dart';
 import '../../services/ScreenAdapter.dart';
 import '../../services/UserServices.dart';
+import '../../services/EnDecodeUtil.dart';
 
 
 class UserPage extends StatefulWidget {
@@ -22,7 +24,7 @@ class _UserPageState extends State<UserPage> {
     super.initState();
     _getUserInfo();
     eventBus.on<UserEvent>().listen((event){
-    _getUserInfo();
+     _getUserInfo();
     });
   }
 
@@ -34,6 +36,21 @@ class _UserPageState extends State<UserPage> {
       this.userInfo = userInfo;
     });
 
+
+    String aesKey = await FlutterAesEcbPkcs5.generateDesKey(128);
+    print(aesKey);
+    String encodeAES = await EnDecodeUtil.encodeAES('liyouxiu');
+    print('encodeAES ---- > $encodeAES');
+
+    String decodeAES =await EnDecodeUtil.decodeAES('$encodeAES');
+    print('decodeAES ---- > $decodeAES');
+
+    String encodeRSAText = await EnDecodeUtil.encodeRSA('liyouxiu');
+    print('encodeRSA ---- > $encodeRSAText');
+
+    String decodeRSA =await EnDecodeUtil.decodeRSA('$encodeRSAText');
+    print('decodeRSA ---- > $decodeRSA');
+    
   }
   @override
   Widget build(BuildContext context) {

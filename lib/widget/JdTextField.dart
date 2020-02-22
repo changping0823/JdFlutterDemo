@@ -2,37 +2,43 @@ import 'package:flutter/material.dart';
 import '../services/ScreenAdapter.dart';
 
 class JdTextField extends StatelessWidget {
-  final String placeholder;/// 占位文字
-  final bool secureTextEntry;/// 文本是否加密
+  final String placeholder;
+
+  /// 占位文字
+  final bool secureTextEntry;
+
+  /// 文本是否加密
   final ValueChanged<String> onChanged;
-  JdTextField({Key key,this.placeholder='输入内容',this.secureTextEntry=false,this.onChanged}) : super(key: key);
+  final int maxLines;
+  final double height;
+  JdTextField(
+      {Key key,
+      this.placeholder = '输入内容',
+      this.secureTextEntry = false,
+      this.onChanged,
+      this.maxLines = 1,
+      this.height = 60})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: ScreenAdapter.height(60),
-      padding: EdgeInsets.only(top:ScreenAdapter.height(0)),
+      height: ScreenAdapter.height(this.height),
+      padding: EdgeInsets.only(top: ScreenAdapter.height(0)),
       decoration: BoxDecoration(
           // color: Color.fromRGBO(233, 233, 233, 0.8),
           // borderRadius: BorderRadius.circular(ScreenAdapter.height(25))
-          border: Border(
-            bottom: BorderSide(
-              width: 1,
-              color: Colors.black12
-            )
-          )
-      ),
+          border: Border(bottom: BorderSide(width: 1, color: Colors.black12))),
       child: TextField(
+        maxLines: this.maxLines,
         obscureText: this.secureTextEntry,
-          decoration: InputDecoration(
+        decoration: InputDecoration(
             hintText: this.placeholder,
-              border: OutlineInputBorder(
+            border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(ScreenAdapter.height(25)),
-                borderSide: BorderSide.none
-                )
-              ),
-          onChanged: this.onChanged,
-        ),
+                borderSide: BorderSide.none)),
+        onChanged: this.onChanged,
+      ),
     );
   }
 }

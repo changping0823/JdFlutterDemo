@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'routers/router.dart';
 import 'Provider/CartCounter.dart';
+import 'Provider/CheckOutProvider.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,10 +19,12 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => CartCounter()),
+          ChangeNotifierProvider(create: (_) => CheckOutProvider()),
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: '/',
+          // initialRoute: '/',
+          initialRoute: '/addressAdd',
           onGenerateRoute: onGenerateRouter,
           theme: ThemeData(primaryColor: Colors.white),
         ));

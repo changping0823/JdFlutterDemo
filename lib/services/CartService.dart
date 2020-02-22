@@ -55,4 +55,21 @@ class CartService {
     data['checked'] = true;
     return data;
   }
+
+  static getCheckOutList() async{
+    List cartList = [];
+    List tempList = [];
+    try {
+      cartList = json.decode(await Storage.getString('cartList'));
+    } catch (e) {
+      cartList = [];
+    }
+
+    for (var i = 0; i < cartList.length; i++) {
+      if (cartList[i]['checked']) {
+        tempList.add(cartList[i]);
+      }
+    }
+    return tempList;
+  }
 }

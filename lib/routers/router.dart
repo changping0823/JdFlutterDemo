@@ -9,12 +9,20 @@ import '../pages/Login.dart';
 import '../pages/RegisterFirst.dart';
 import '../pages/RegisterSecond.dart';
 import '../pages/RegisterThird.dart';
+import '../pages/CheckOut.dart';
+import '../pages/Address/AddressList.dart';
+import '../pages/Address/AddressAdd.dart';
+import '../pages/Address/AddressEdit.dart';
 // 配置路由
 final routers = {
   '/': (context) => Tabs(),
   '/search': (context) => SearchPage(),
   '/cart': (context) => CartPage(),
   '/login': (context) => LoginPage(),
+  '/checkOut': (context) => CheckOutPage(),
+  '/addressList': (context) => AddressListPage(),
+  '/addressAdd': (context) => AddressAddPage(),
+  '/addressEdit': (context) => AddressEditPage(),
   '/registerFirst': (context) => RegisterFirstPage(),
   '/registerSecond': (context,{arguments}) => RegisterSecondPage(arguments:arguments),
   '/registerThird': (context,{arguments}) => RegisterThirdPage(arguments:arguments),
