@@ -66,7 +66,13 @@ class _CartPageState extends State<CartPage> {
             children: <Widget>[
               Column(
                 children: cartCounter.cartList.map((value){
-                  return CartItem(value);
+                  return InkWell(
+                    child: CartItem(value),
+                    onTap: (){
+                      print(value);
+                      Navigator.pushNamed(context, '/productContent',arguments: {'id': value['_id']});
+                    },
+                  );
                 }).toList(),
               ),
               SizedBox(height: ScreenAdapter.height(88))

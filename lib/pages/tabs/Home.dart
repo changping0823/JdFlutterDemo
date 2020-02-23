@@ -77,7 +77,11 @@ class _HomePageState extends State<HomePage>
               },
               itemCount: this._focusData.length,
               pagination: new SwiperPagination(),
-              autoplay: true),
+              autoplay: true,
+              onTap: (index){
+                // Navigator.pushNamed(context, '/productContent',arguments: {'id': this._focusData[index].sId});
+              },
+            ),
         ),
       );
     } else {
@@ -113,16 +117,22 @@ class _HomePageState extends State<HomePage>
             itemBuilder: (context, index) {
               String pic = this._hotProductList[index].sPic;
               return Column(children: <Widget>[
-                Container(
-                  width: ScreenAdapter.width(140),
-                  height: ScreenAdapter.height(140),
-                  margin: EdgeInsets.only(right: ScreenAdapter.width(10)),
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: Image.network(
-                        '${Config.domain}${pic.replaceAll('\\', '/')}',
-                        fit: BoxFit.cover),
+                InkWell(
+                  child: Container(
+                    width: ScreenAdapter.width(140),
+                    height: ScreenAdapter.height(140),
+                    margin: EdgeInsets.only(right: ScreenAdapter.width(10)),
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Image.network(
+                          '${Config.domain}${pic.replaceAll('\\', '/')}',
+                          fit: BoxFit.cover),
+                    ),
                   ),
+                  onTap: () {
+                    Navigator.pushNamed(context, '/productContent',
+                        arguments: {'id': this._hotProductList[index].sId});
+                  },
                 ),
                 Container(
                   margin: EdgeInsets.only(top: ScreenAdapter.height(5)),
@@ -211,7 +221,7 @@ class _HomePageState extends State<HomePage>
     super.build(context);
     ScreenAdapter.init(context);
     return Scaffold(
-      appBar: AppBar(title: Text('首页'),backgroundColor: Colors.red),
+      appBar: AppBar(title: Text('首页'), backgroundColor: Colors.red),
       body: ListView(children: <Widget>[
         _swiperWidget(),
         SizedBox(height: ScreenAdapter.width(10)),
