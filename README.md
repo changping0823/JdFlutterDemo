@@ -1,21 +1,10 @@
-<<<<<<< HEAD
-# JdFlutterDemo
-提交flutter代码
-=======
-# flutter_jdshop
 
-A new Flutter application.
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
->>>>>>> 第一次更新
+![image](https://github.com/changping0823/JdFlutterDemo/blob/master/ScreenImages/WechatIMG446.jpeg)
+![image](https://github.com/changping0823/JdFlutterDemo/blob/master/ScreenImages/WechatIMG447.jpeg)
+![image](https://github.com/changping0823/JdFlutterDemo/blob/master/ScreenImages/WechatIMG448.jpeg)
+![image](https://github.com/changping0823/JdFlutterDemo/blob/master/ScreenImages/WechatIMG449.jpeg)
+![image](https://github.com/changping0823/JdFlutterDemo/blob/master/ScreenImages/WechatIMG450.jpeg)
+![image](https://github.com/changping0823/JdFlutterDemo/blob/master/ScreenImages/WechatIMG451.jpeg)
+![image](https://github.com/changping0823/JdFlutterDemo/blob/master/ScreenImages/WechatIMG452.jpeg)
