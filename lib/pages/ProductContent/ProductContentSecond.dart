@@ -25,6 +25,7 @@ class _ProductContentSecondState extends State<ProductContentSecond>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     ScreenAdapter.init(context);
     print('http://jd.itying.com/pcontent?id=${this._sId}');
 

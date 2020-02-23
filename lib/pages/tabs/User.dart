@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_aes_ecb_pkcs5/flutter_aes_ecb_pkcs5.dart';
-import 'package:flutter_jdshop/widget/JdButton.dart';
+import '../../widget/JdButton.dart';
 import '../../services/EventBus.dart';
 import '../../services/ScreenAdapter.dart';
 import '../../services/UserServices.dart';
-import '../../services/EnDecodeUtil.dart';
 
 
 class UserPage extends StatefulWidget {

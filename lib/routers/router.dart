@@ -39,9 +39,6 @@ final routers = {
 
 };
 
-
-
-
 // 固定写法
 var onGenerateRouter = (RouteSettings settings){
   final String name = settings.name;

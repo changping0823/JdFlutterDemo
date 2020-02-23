@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jdshop/widget/SrarchAppBar.dart';
-import '../../services/ScreenAdapter.dart';
-import '../../widget/SrarchAppBar.dart';
 import 'package:dio/dio.dart';
+import '../../widget/SrarchAppBar.dart';
+import '../../services/ScreenAdapter.dart';
 import '../../Config/Config.dart';
 import '../../Models/CateModel.dart';
 
@@ -142,6 +141,12 @@ class _CategoryPageState extends State<CategoryPage> with AutomaticKeepAliveClie
 
   @override
   Widget build(BuildContext context) {
+    /*
+    添加AutomaticKeepAliveClientMixin，
+    并实现对应的方法bool get wantKeepAlive => true;
+    同时build方法实现父方法 super.build(context);
+    */ 
+    super.build(context);
     ScreenAdapter.init(context);
     var screenWidth = ScreenAdapter.getScreenWidth();
     var leftWidth = screenWidth / 4;

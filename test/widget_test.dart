@@ -1,9 +1,8 @@
 
 import 'package:flutter/material.dart';
-import 'package:flutter_jdshop/Calculator.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:flutter_jdshop/main.dart';
+import '../lib/Calculator.dart';
+import '../lib/main.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();

@@ -208,6 +208,7 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     ScreenAdapter.init(context);
     return Scaffold(
       appBar: AppBar(title: Text('首页'),backgroundColor: Colors.red),

@@ -221,6 +221,7 @@ class _ProductContentFirstState extends State<ProductContentFirst>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     this._cartCounter = Provider.of<CartCounter>(context);
 
     ScreenAdapter.init(context);

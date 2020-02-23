@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jdshop/services/ScreenAdapter.dart';
+import '../services/ScreenAdapter.dart';
 
 class OrderInfoPage extends StatefulWidget {
   OrderInfoPage({Key key}) : super(key: key);

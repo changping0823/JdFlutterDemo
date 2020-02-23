@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_jdshop/Config/Config.dart';
-import 'package:flutter_jdshop/Models/OrderModel.dart';
+import '../Config/Config.dart';
+import '../Models/OrderModel.dart';
 import '../services/SignServices.dart';
 import '../services/UserServices.dart';
 import '../services/ScreenAdapter.dart';
