@@ -23,8 +23,8 @@ class _MyAppState extends State<MyApp> {
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
-          // initialRoute: '/',
-          initialRoute: '/addressAdd',
+          initialRoute: '/',
+          // initialRoute: '/addressAdd',
           onGenerateRoute: onGenerateRouter,
           theme: ThemeData(primaryColor: Colors.white),
         ));

@@ -210,7 +210,7 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     ScreenAdapter.init(context);
     return Scaffold(
-      appBar: AppBar(title: Text('首页')),
+      appBar: AppBar(title: Text('首页'),backgroundColor: Colors.red),
       body: ListView(children: <Widget>[
         _swiperWidget(),
         SizedBox(height: ScreenAdapter.width(10)),

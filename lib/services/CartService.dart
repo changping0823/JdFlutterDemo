@@ -5,8 +5,6 @@ import 'Storage.dart';
 class CartService {
   static addProduct(item) async {
     item = formatProduct(item);
-    print('----->$item');
-
     try {
       List cartList = json.decode(await Storage.getString('cartList'));
       bool hasData = cartList.any((value) {
@@ -71,5 +69,25 @@ class CartService {
       }
     }
     return tempList;
+  }
+  
+
+  /// 删除选中商品
+  static removeCheckOutItem() async{
+    List cartList = [];
+    List tempList = [];
+    try {
+      cartList = json.decode(await Storage.getString('cartList'));
+    } catch (e) {
+      cartList = [];
+    }
+
+    for (var i = 0; i < cartList.length; i++) {
+      if (cartList[i]['checked'] == false) {
+        tempList.add(cartList[i]);
+      }
+    }
+    await Storage.setString('cartList', json.encode(tempList));
+
   }
 }

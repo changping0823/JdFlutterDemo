@@ -15,3 +15,24 @@ class UserEvent{
     this.text = text;
   }
 }
+
+class AddressEvent{
+  String text;
+  AddressEvent(String text){
+    this.text = text;
+  }
+}
+
+class EditAddressEvent{
+  String text;
+  EditAddressEvent(String text){
+    this.text = text;
+  }
+}
+
+class ChangeAddressEvent{
+  String text;
+  ChangeAddressEvent(String text){
+    this.text = text;
+  }
+}

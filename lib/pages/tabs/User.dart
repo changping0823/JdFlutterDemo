@@ -36,21 +36,6 @@ class _UserPageState extends State<UserPage> {
       this.userInfo = userInfo;
     });
 
-
-    String aesKey = await FlutterAesEcbPkcs5.generateDesKey(128);
-    print(aesKey);
-    String encodeAES = await EnDecodeUtil.encodeAES('liyouxiu');
-    print('encodeAES ---- > $encodeAES');
-
-    String decodeAES =await EnDecodeUtil.decodeAES('$encodeAES');
-    print('decodeAES ---- > $decodeAES');
-
-    String encodeRSAText = await EnDecodeUtil.encodeRSA('liyouxiu');
-    print('encodeRSA ---- > $encodeRSAText');
-
-    String decodeRSA =await EnDecodeUtil.decodeRSA('$encodeRSAText');
-    print('decodeRSA ---- > $decodeRSA');
-    
   }
   @override
   Widget build(BuildContext context) {
@@ -98,6 +83,9 @@ class _UserPageState extends State<UserPage> {
           ListTile(
             leading: Icon(Icons.assignment,color: Colors.red),
             title: Text('全部订单'),
+            onTap: (){
+              Navigator.pushNamed(context, '/order');
+            },
           ),
           Divider(),
           ListTile(

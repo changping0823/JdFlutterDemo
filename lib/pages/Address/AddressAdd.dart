@@ -1,7 +1,9 @@
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:city_pickers/city_pickers.dart';
+import '../../services/EventBus.dart';
 import '../../Config/Config.dart';
 import '../../services/SignServices.dart';
 import '../../services/UserServices.dart';
@@ -23,6 +25,22 @@ class _AddressAddPageState extends State<AddressAddPage> {
   String address = '';
 
   _addAddress() async {
+    if (this.name.length == 0) {
+      Fluttertoast.showToast(msg: '请输入收货人姓名',toastLength: Toast.LENGTH_SHORT,gravity: ToastGravity.CENTER);
+      return;
+    }
+    if (this.phone.length == 0) {
+      Fluttertoast.showToast(msg: '请输入收货人手机号',toastLength: Toast.LENGTH_SHORT,gravity: ToastGravity.CENTER);
+      return;
+    }
+    if (this.area.length == 0) {
+      Fluttertoast.showToast(msg: '请选择收获省市区',toastLength: Toast.LENGTH_SHORT,gravity: ToastGravity.CENTER);
+      return;
+    }
+    if (this.address.length == 0) {
+      Fluttertoast.showToast(msg: '请输入收货人详细地址',toastLength: Toast.LENGTH_SHORT,gravity: ToastGravity.CENTER);
+      return;
+    }
     Map userInfo = await UserServices.userInfo();
     Map json = {
       'uid': userInfo['_id'],
@@ -33,8 +51,6 @@ class _AddressAddPageState extends State<AddressAddPage> {
     };
     String sign = SignServices.getSign(json);
 
-    print(json);
-
     var api = '${Config.domain}api/addAddress';
     var result = await Dio().post(api,data: {
       'uid': userInfo['_id'],
@@ -44,9 +60,16 @@ class _AddressAddPageState extends State<AddressAddPage> {
       'sign': sign
     });
     if (result.data['success']) {
-      print('增加地址成功');
+      eventBus.fire(new ChangeAddressEvent('修改默认收货地址'));
+      Navigator.pop(context);
     }
     // var hotProductList = ProductModel.fromJson(result.data);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    eventBus.fire(new AddressEvent('新增收货地址成功'));
   }
 
   @override
