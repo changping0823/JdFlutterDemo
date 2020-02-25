@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jdshop/services/MethodChannelService.dart';
 import 'package:provider/provider.dart';
 import 'routers/router.dart';
 import 'Provider/CartCounter.dart';
@@ -16,6 +17,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    print('batteryLevel----->${MethodChannelService.getBatteryLevel()}');
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => CartCounter()),

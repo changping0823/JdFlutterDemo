@@ -76,7 +76,6 @@ class _HomePageState extends State<HomePage>
                 );
               },
               itemCount: this._focusData.length,
-              pagination: new SwiperPagination(),
               autoplay: true,
               onTap: (index){
                 // Navigator.pushNamed(context, '/productContent',arguments: {'id': this._focusData[index].sId});
