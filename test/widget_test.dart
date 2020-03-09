@@ -22,11 +22,11 @@ void main() {
     String decodeRSA = await DecodeUtil.decodeRSA(encodeRSAText);
     print('decodeRSA ---- > $decodeRSA');
 
-        String encodeAES = await DecodeUtil.encodeAES('liyouxiu');
-    print('encodeAES ---- > $encodeAES');
-
-    String decodeAES =await DecodeUtil.decodeAES('$encodeAES');
-    print('decodeAES ---- > $decodeAES');
+//        String encodeAES = await DecodeUtil.encodeAES('liyouxiu');
+//    print('encodeAES ---- > $encodeAES');
+//
+//    String decodeAES =await DecodeUtil.decodeAES('$encodeAES');
+//    print('decodeAES ---- > $decodeAES');
 
 
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jdshop/services/MethodChannelService.dart';
 import '../services/ScreenAdapter.dart';
 
 class SearchAppBar {
@@ -35,9 +36,19 @@ class SearchAppBar {
       actions: <Widget>[
         IconButton(
           icon: Icon(Icons.message, size: 28, color: Colors.black87),
-          onPressed: null,
+          onPressed: (){
+            _pushNativePage();
+          },
         )
       ],
     );
+
+    
   }
+
+  static  _pushNativePage() {
+    MethodChannelService.pushNative();
+  }
+
+
 }

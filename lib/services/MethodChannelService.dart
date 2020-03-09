@@ -1,5 +1,4 @@
-import 'dart:async';
-import 'package:flutter/material.dart';
+
 import 'package:flutter/services.dart';
 
 class MethodChannelService {
@@ -16,17 +15,14 @@ class MethodChannelService {
     }
     return batteryLevel;
   }
-    
-    /// 跳转原生
-    static pushNative() async {
+
+  /// 跳转原生
+  static pushNative() {
     String batteryLevel;
     try {
-      final int result = await platform.invokeMethod('getBatteryLevel');
-      batteryLevel = 'Battery level at $result % .';
-      print('11111------>$batteryLevel');
+      platform.invokeMethod('pushNativePage', {'key1': 'value1'});
     } on PlatformException catch (e) {
       batteryLevel = "Failed to get battery level: '${e.message}'.";
-      print('22222------>$batteryLevel');
     }
     return batteryLevel;
   }

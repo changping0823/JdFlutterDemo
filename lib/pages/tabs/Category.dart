@@ -68,9 +68,7 @@ class _CategoryPageState extends State<CategoryPage> with AutomaticKeepAliveClie
                           height: ScreenAdapter.height(84),
                           padding: EdgeInsets.only(top:ScreenAdapter.height(24)),
 
-                          color: _selectIndex == index
-                              ? Color.fromRGBO(240, 240, 240, 1.0)
-                              : Colors.white,
+                          color: _selectIndex == index ? Color.fromRGBO(240, 240, 240, 1.0) : Colors.white,
                         )),
                     Divider(height: 1)
                   ],

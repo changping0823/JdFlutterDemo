@@ -59,7 +59,4 @@ class SearchServices {
       await Storage.setString('searchList', json.encode(searchListData));
   }
 
-
-  
-
 }

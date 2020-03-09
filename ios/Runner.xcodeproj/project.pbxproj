@@ -11,8 +11,12 @@
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		3B80C3941E831B6300D905FE /* App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; };
 		3B80C3951E831B6300D905FE /* App.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3B80C3931E831B6300D905FE /* App.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		6D4E94042406389D00875900 /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4E94032406389D00875900 /* TestViewController.m */; };
+		6D4E9407240647B900875900 /* JDHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4E9406240647B900875900 /* JDHttpTool.m */; };
+		6D4E940A24064A8A00875900 /* JDFMChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D4E940924064A8A00875900 /* JDFMChannel.m */; };
 		6DB3E43924036CAA00587237 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB3E43824036CAA00587237 /* AppDelegate.m */; };
 		6DB3E43C24036E2A00587237 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DB3E43B24036E2A00587237 /* main.m */; };
+		6DD8949F240A8CD300304501 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DD8949E240A8CD300304501 /* main.m */; };
 		9705A1C61CF904A100538489 /* Flutter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; };
 		9705A1C71CF904A300538489 /* Flutter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9740EEBA1CF902C7004384FC /* Flutter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
@@ -43,9 +47,16 @@
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
 		3B80C3931E831B6300D905FE /* App.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = App.framework; path = Flutter/App.framework; sourceTree = "<group>"; };
 		4F241558135FE57C0A9B5889 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		6D4E94022406389D00875900 /* TestViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
+		6D4E94032406389D00875900 /* TestViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
+		6D4E9405240647B900875900 /* JDHttpTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JDHttpTool.h; sourceTree = "<group>"; };
+		6D4E9406240647B900875900 /* JDHttpTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JDHttpTool.m; sourceTree = "<group>"; };
+		6D4E940824064A8A00875900 /* JDFMChannel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JDFMChannel.h; sourceTree = "<group>"; };
+		6D4E940924064A8A00875900 /* JDFMChannel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JDFMChannel.m; sourceTree = "<group>"; };
 		6DB3E43724036CAA00587237 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6DB3E43824036CAA00587237 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		6DB3E43B24036E2A00587237 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6DD8949E240A8CD300304501 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		7BDEB7EF488DF044CED23D5F /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,7 +129,14 @@
 				1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */,
 				6DB3E43724036CAA00587237 /* AppDelegate.h */,
 				6DB3E43824036CAA00587237 /* AppDelegate.m */,
+				6D4E94022406389D00875900 /* TestViewController.h */,
+				6D4E94032406389D00875900 /* TestViewController.m */,
+				6D4E9405240647B900875900 /* JDHttpTool.h */,
+				6D4E9406240647B900875900 /* JDHttpTool.m */,
+				6D4E940824064A8A00875900 /* JDFMChannel.h */,
+				6D4E940924064A8A00875900 /* JDFMChannel.m */,
 				74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */,
+				6DD8949E240A8CD300304501 /* main.m */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -271,7 +289,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
+			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
 		B830CD2851CDB75D7E56DBAE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -297,6 +315,10 @@
 			files = (
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 				6DB3E43C24036E2A00587237 /* main.m in Sources */,
+				6D4E940A24064A8A00875900 /* JDFMChannel.m in Sources */,
+				6D4E94042406389D00875900 /* TestViewController.m in Sources */,
+				6D4E9407240647B900875900 /* JDHttpTool.m in Sources */,
+				6DD8949F240A8CD300304501 /* main.m in Sources */,
 				6DB3E43924036CAA00587237 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import "GeneratedPluginRegistrant.h"
+#import <Flutter/Flutter.h>
 
 @implementation AppDelegate
 
