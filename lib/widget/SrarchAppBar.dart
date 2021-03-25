@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jdshop/services/MethodChannelService.dart';
+// import 'package:flutter_jdshop/services/MethodChannelService.dart';
 import '../services/ScreenAdapter.dart';
+import 'package:jd_flutter/services/MethodChannelService.dart';
 
 class SearchAppBar {
   SearchAppBar(BuildContext context);

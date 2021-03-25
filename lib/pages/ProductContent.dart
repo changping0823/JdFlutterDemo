@@ -53,7 +53,7 @@ class _ProductContentPageState extends State<ProductContentPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenAdapter.init(context);
+    // ScreenAdapter.init(context);
     this._cartCounter = Provider.of<CartCounter>(context);
     
     return DefaultTabController(

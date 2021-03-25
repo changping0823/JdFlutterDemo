@@ -145,7 +145,7 @@ class _CategoryPageState extends State<CategoryPage> with AutomaticKeepAliveClie
     同时build方法实现父方法 super.build(context);
     */ 
     super.build(context);
-    ScreenAdapter.init(context);
+    // ScreenAdapter.init(context);
     var screenWidth = ScreenAdapter.getScreenWidth();
     var leftWidth = screenWidth / 4;
     var rightItemWidth = (screenWidth - leftWidth - 20 - 20) / 3;

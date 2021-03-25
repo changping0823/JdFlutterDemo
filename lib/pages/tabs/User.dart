@@ -37,7 +37,7 @@ class _UserPageState extends State<UserPage> {
   }
   @override
   Widget build(BuildContext context) {
-    ScreenAdapter.init(context);
+    // ScreenAdapter.init(context);
     return Scaffold(
       body: ListView(
         children: <Widget>[

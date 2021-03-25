@@ -41,7 +41,7 @@ class _CartPageState extends State<CartPage> {
   
   @override
   Widget build(BuildContext context) {
-    ScreenAdapter.init(context);
+    // ScreenAdapter.init(context);
     var cartCounter = Provider.of<CartCounter>(context);
     checkOutProvider = Provider.of<CheckOutProvider>(context);
 
@@ -51,7 +51,7 @@ class _CartPageState extends State<CartPage> {
         title: Text('购物车'),
         actions: <Widget>[
           IconButton(
-          icon: Icon(Icons.edit), 
+          icon: Icon(Icons.edit),
           onPressed: (){
             setState(() {
               this._isEdit = !this._isEdit;
@@ -60,7 +60,7 @@ class _CartPageState extends State<CartPage> {
         ],
       ),
       body: Stack(
-        
+
         children: <Widget>[
           cartCounter.cartList.length > 0?ListView(
             children: <Widget>[

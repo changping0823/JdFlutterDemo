@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_jdshop/services/MethodChannelService.dart';
+import 'package:flutter_screenutil/screenutil_init.dart';
+import 'package:jd_flutter/services/MethodChannelService.dart';
 import 'package:provider/provider.dart';
 import 'routers/router.dart';
 import 'Provider/CartCounter.dart';
@@ -17,8 +18,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    print('batteryLevel----->${MethodChannelService.getBatteryLevel()}');
-    return MultiProvider(
+    return ScreenUtilInit(
+        designSize: Size(750, 1334),
+        allowFontScaling: false,
+        builder: ()=>MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (_) => CartCounter()),
           ChangeNotifierProvider(create: (_) => CheckOutProvider()),
@@ -26,9 +29,8 @@ class _MyAppState extends State<MyApp> {
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
           initialRoute: '/',
-          // initialRoute: '/addressAdd',
           onGenerateRoute: onGenerateRouter,
           theme: ThemeData(primaryColor: Colors.white),
-        ));
+        )));
   }
 }

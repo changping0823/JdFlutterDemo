@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:jd_flutter/pages/tabs/Home.dart';
 import '../pages/Pay.dart';
 import '../pages/Order.dart';
 import '../pages/OrderInfo.dart';
@@ -21,6 +22,7 @@ import '../pages/Address/AddressEdit.dart';
 final routers = {
   '/': (context) => Tabs(),
   '/search': (context) => SearchPage(),
+  '/home': (context) => HomePage(),
   '/cart': (context) => CartPage(),
   '/login': (context) => LoginPage(),
   '/checkOut': (context) => CheckOutPage(),

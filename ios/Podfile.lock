@@ -1,21 +1,4 @@
 PODS:
-  - AFNetworking (3.2.1):
-    - AFNetworking/NSURLSession (= 3.2.1)
-    - AFNetworking/Reachability (= 3.2.1)
-    - AFNetworking/Security (= 3.2.1)
-    - AFNetworking/Serialization (= 3.2.1)
-    - AFNetworking/UIKit (= 3.2.1)
-  - AFNetworking/NSURLSession (3.2.1):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.2.1)
-  - AFNetworking/Security (3.2.1)
-  - AFNetworking/Serialization (3.2.1)
-  - AFNetworking/UIKit (3.2.1):
-    - AFNetworking/NSURLSession
-  - city_pickers (0.0.1):
-    - Flutter
   - Flutter (1.0.0)
   - flutter_aes_ecb_pkcs5 (0.0.1):
     - Flutter
@@ -23,34 +6,17 @@ PODS:
     - Flutter
   - fluttertoast (0.0.2):
     - Flutter
-  - MJExtension (3.2.1)
   - shared_preferences (0.0.1):
-    - Flutter
-  - shared_preferences_macos (0.0.1):
-    - Flutter
-  - shared_preferences_web (0.0.1):
     - Flutter
 
 DEPENDENCIES:
-  - AFNetworking
-  - city_pickers (from `.symlinks/plugins/city_pickers/ios`)
   - Flutter (from `Flutter`)
   - flutter_aes_ecb_pkcs5 (from `.symlinks/plugins/flutter_aes_ecb_pkcs5/ios`)
   - flutter_inappbrowser (from `.symlinks/plugins/flutter_inappbrowser/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
-  - MJExtension
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
-  - shared_preferences_macos (from `.symlinks/plugins/shared_preferences_macos/ios`)
-  - shared_preferences_web (from `.symlinks/plugins/shared_preferences_web/ios`)
-
-SPEC REPOS:
-  trunk:
-    - AFNetworking
-    - MJExtension
 
 EXTERNAL SOURCES:
-  city_pickers:
-    :path: ".symlinks/plugins/city_pickers/ios"
   Flutter:
     :path: Flutter
   flutter_aes_ecb_pkcs5:
@@ -61,23 +27,14 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/fluttertoast/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
-  shared_preferences_macos:
-    :path: ".symlinks/plugins/shared_preferences_macos/ios"
-  shared_preferences_web:
-    :path: ".symlinks/plugins/shared_preferences_web/ios"
 
 SPEC CHECKSUMS:
-  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
-  city_pickers: b0370f4c35c201723b5b7fcce10ec29b59d5bc35
-  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
   flutter_aes_ecb_pkcs5: fb682a7bb13f29cfbb33f88f7e1ed2211eacf5db
   flutter_inappbrowser: cd1fa70c62958a5674ffba8ecc3f3cfae845466d
   fluttertoast: b644586ef3b16f67fae9a1f8754cef6b2d6b634b
-  MJExtension: 635f2c663dcb1bf76fa4b715b2570a5710aec545
-  shared_preferences: 430726339841afefe5142b9c1f50cb6bd7793e01
-  shared_preferences_macos: f3f29b71ccbb56bf40c9dd6396c9acf15e214087
-  shared_preferences_web: 141cce0c3ed1a1c5bf2a0e44f52d31eeb66e5ea9
+  shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
 
-PODFILE CHECKSUM: 8ef90d8fc6645da0432ba780b83a14d2891f3334
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
 
-COCOAPODS: 1.8.4
+COCOAPODS: 1.10.1

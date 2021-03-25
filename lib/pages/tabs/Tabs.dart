@@ -31,7 +31,7 @@ class _TabsState extends State<Tabs> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenAdapter.init(context);
+    // ScreenAdapter.init(context);
     return Scaffold(
       // appBar: _showAppBar(context, this._currentIndex),
       body: PageView(
@@ -55,12 +55,10 @@ class _TabsState extends State<Tabs> {
         type: BottomNavigationBarType.fixed,
         fixedColor: Colors.red,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text("首页")),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.category), title: Text("分类")),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.shopping_cart), title: Text("购物车")),
-          BottomNavigationBarItem(icon: Icon(Icons.people), title: Text("我的"))
+          BottomNavigationBarItem(icon: Icon(Icons.home),label: '首页'),
+          BottomNavigationBarItem(icon: Icon(Icons.category),label: '分类'),
+          BottomNavigationBarItem(icon: Icon(Icons.shopping_cart),label: '购物车'),
+          BottomNavigationBarItem(icon: Icon(Icons.people),label: '我的')
         ],
       ),
     );

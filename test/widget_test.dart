@@ -1,38 +1,30 @@
+// This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility that Flutter provides. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../lib/Calculator.dart';
-import '../lib/main.dart';
+
+import 'package:jd_flutter/main.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(MyApp());
-  test('adds one to input values', () async{
-    // final calculator = Calculator();
-    // expect(calculator.addOne(2), 3);
-    // expect(calculator.addOne(-7), -6);
-  // calculator
+  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(MyApp());
 
-// flutter: encodeAES ---- > 95DFA83EA0955A691CBB6F952EBA2B08
-// flutter: decodeAES ---- > liyouxiu
-// flutter: encodeRSA ---- > NLCI0UmB/NjgEnlH/yX7b6s1+w4scScCqwB+p5rIIiGIMI8hTQM4q7dkpuWUw8THprFj1Donj1dNXDNFAdUmhh48SFnjjcLSrkosq28kAgazvWQEYDkSHCHbdJiouPhidQld0aDHHmp8ZXD5wISKlPgFusUU3erAf5veRVLG0kI=
-// flutter: decodeRSA ---- > liyouxiu
-    String encodeRSAText = await DecodeUtil.encodeRSA('liyouxiu');
-    print('encodeRSA ---- > $encodeRSAText');
-    String decodeRSA = await DecodeUtil.decodeRSA(encodeRSAText);
-    print('decodeRSA ---- > $decodeRSA');
+    // Verify that our counter starts at 0.
+    expect(find.text('0'), findsOneWidget);
+    expect(find.text('1'), findsNothing);
 
-//        String encodeAES = await DecodeUtil.encodeAES('liyouxiu');
-//    print('encodeAES ---- > $encodeAES');
-//
-//    String decodeAES =await DecodeUtil.decodeAES('$encodeAES');
-//    print('decodeAES ---- > $decodeAES');
+    // Tap the '+' icon and trigger a frame.
+    await tester.tap(find.byIcon(Icons.add));
+    await tester.pump();
 
-
-
-    // expect(await DecodeUtil().decodeRSA('NLCI0UmB/NjgEnlH/yX7b6s1+w4scScCqwB+p5rIIiGIMI8hTQM4q7dkpuWUw8THprFj1Donj1dNXDNFAdUmhh48SFnjjcLSrkosq28kAgazvWQEYDkSHCHbdJiouPhidQld0aDHHmp8ZXD5wISKlPgFusUU3erAf5veRVLG0kI='),'liyouxiu');
-    // print(response.request.headers['token']);
-
-
+    // Verify that our counter has incremented.
+    expect(find.text('0'), findsNothing);
+    expect(find.text('1'), findsOneWidget);
   });
 }
