@@ -2,7 +2,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-// import 'package:city_pickers/city_pickers.dart';
 import '../../services/EventBus.dart';
 import '../../Config/Config.dart';
 import '../../services/SignServices.dart';

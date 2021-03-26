@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_inappbrowser/flutter_inappbrowser.dart';
 import '../../services/ScreenAdapter.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import '../../Models/ProductContentModel.dart';
 
 class ProductContentSecond extends StatefulWidget {
@@ -16,6 +16,18 @@ class _ProductContentSecondState extends State<ProductContentSecond>
   bool get wantKeepAlive => true;
 
   String _sId;
+
+  InAppWebViewGroupOptions options = InAppWebViewGroupOptions(
+      crossPlatform: InAppWebViewOptions(
+        useShouldOverrideUrlLoading: true,
+        mediaPlaybackRequiresUserGesture: false,
+      ),
+      android: AndroidInAppWebViewOptions(
+        useHybridComposition: true,
+      ),
+      ios: IOSInAppWebViewOptions(
+        allowsInlineMediaPlayback: true,
+      ));
 
   @override
   void initState() {
@@ -37,10 +49,13 @@ class _ProductContentSecondState extends State<ProductContentSecond>
         children: <Widget>[
           Expanded(
             child: InAppWebView(
-              initialUrl: "http://jd.itying.com/pcontent?id=${this._sId}",
+
+              initialUrlRequest:URLRequest(url: Uri.parse("http://jd.itying.com/pcontent?id=${this._sId}")),
               onProgressChanged:
-                  (InAppWebViewController controller, int progress) {},
-              initialOptions: InAppWebViewWidgetOptions(),
+                  (InAppWebViewController controller, int progress) {
+
+                  },
+              initialOptions: options,
             ),
           )
         ],

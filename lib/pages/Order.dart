@@ -60,7 +60,6 @@ class _OrderPageState extends State<OrderPage> {
 
   @override
   Widget build(BuildContext context) {
-    ScreenAdapter.init(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('我的订单'),

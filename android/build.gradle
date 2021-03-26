@@ -1,6 +1,10 @@
 buildscript {
     repositories {
-        maven { url "https://storage.googleapis.com/download.flutter.io" }
+        maven { url "http://download.flutter.io" }
+//        maven { url 'https://maven.aliyun.com/repository/google'}
+//        maven { url 'https://maven.aliyun.com/repository/jcenter'}
+//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public'}
+//        maven { url "https://storage.googleapis.com/download.flutter.io" }
         google()
         jcenter()
     }
@@ -12,7 +16,11 @@ buildscript {
 
 allprojects {
     repositories {
-        maven { url "https://storage.googleapis.com/download.flutter.io" }
+        maven { url "http://download.flutter.io" }
+//        maven { url 'https://maven.aliyun.com/repository/google'}
+//        maven { url 'https://maven.aliyun.com/repository/jcenter'}
+//        maven { url 'http://maven.aliyun.com/nexus/content/groups/public'}
+//        maven { url "https://storage.googleapis.com/download.flutter.io" }
         google()
         jcenter()
     }

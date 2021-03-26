@@ -1,4 +1,6 @@
+
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../widget/JdButton.dart';
 import '../../services/EventBus.dart';
 import '../../services/ScreenAdapter.dart';
@@ -15,6 +17,8 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   bool isLogin = false;
   Map userInfo;
+  var _albumImagePath;
+  ImagePicker picker = ImagePicker();
 
 
   @override
@@ -35,49 +39,29 @@ class _UserPageState extends State<UserPage> {
     });
 
   }
+
+
+  _getImage() async {
+    var pickedFile = await ImagePicker.pickImage(source: ImageSource.gallery,maxWidth: 200,maxHeight: 200);
+    setState(() {
+      _albumImagePath = pickedFile;
+    });
+  }
+
+
+  Widget _imageView(imgPath) {
+    if (imgPath == null) {
+      return Image.asset('images/user.png',fit: BoxFit.cover,width: ScreenAdapter.width(100),height: ScreenAdapter.width(100));
+    } else {
+      return Image.file(imgPath,width: ScreenAdapter.width(100),height: ScreenAdapter.width(100),fit: BoxFit.fill,);
+    }
+  }
   @override
   Widget build(BuildContext context) {
-    // ScreenAdapter.init(context);
     return Scaffold(
       body: ListView(
         children: <Widget>[
-          Container(
-            height: ScreenAdapter.height(220),
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage('images/user_bg.jpg'),fit: BoxFit.cover),
-            ),
-            child: Row(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                  child: ClipOval(
-                    child: Image.asset('images/user.png',fit: BoxFit.cover,width: ScreenAdapter.width(100),height: ScreenAdapter.width(100)),
-                  ),
-                ),
-                this.isLogin?Expanded(
-                  flex: 1,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text('用户名：${this.userInfo['username']}',style: TextStyle(fontSize: ScreenAdapter.size(32),color: Colors.white)),
-                      Text('普通会员',style: TextStyle(fontSize: ScreenAdapter.size(24), color: Colors.white)),
-                    ],
-                  )
-                ):
-                Expanded(
-                  flex: 1,
-                  child: InkWell(
-                    onTap: (){
-                      Navigator.pushNamed(context, '/login');
-                    },
-                    child: Text('登录/注册',style: TextStyle(color: Colors.white)),
-                  )
-                )
-              ],
-            ),
-          ),
+          userWidget(),
           ListTile(
             leading: Icon(Icons.assignment,color: Colors.red),
             title: Text('全部订单'),
@@ -122,4 +106,50 @@ class _UserPageState extends State<UserPage> {
       ),
     );
   }
+
+  Widget userWidget(){
+    return Container(
+      height: ScreenAdapter.height(220),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage('images/user_bg.jpg'),fit: BoxFit.cover),
+      ),
+      child: Row(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+            child: InkWell(
+              onTap: (){
+                this._getImage();
+              },
+              child: ClipOval(
+                child: _imageView(_albumImagePath),
+              ),
+            ),
+          ),
+          this.isLogin?Expanded(
+              flex: 1,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('用户名：${this.userInfo['username']}',style: TextStyle(fontSize: ScreenAdapter.size(32),color: Colors.white)),
+                  Text('普通会员',style: TextStyle(fontSize: ScreenAdapter.size(24), color: Colors.white)),
+                ],
+              )
+          ):
+          Expanded(
+              flex: 1,
+              child: InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, '/login');
+                },
+                child: Text('登录/注册',style: TextStyle(color: Colors.white)),
+              )
+          )
+        ],
+      ),
+    );
+  }
+
 }
